@@ -41,5 +41,4 @@ public class three_twenty_eight {
 			System.out.println("r2 does not overlap r1");
 		}
 	}
-
 }
