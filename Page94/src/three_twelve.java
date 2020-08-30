@@ -12,7 +12,7 @@ public class three_twelve {
 		
 		int ge = num % 10;
 		int shi = num / 10 % 10;
-		int bai = num /100 % 10;
+		int bai = num / 100 % 10;
 		
 		int result = bai + shi * 10 + ge * 100;
 		if (result == num) {

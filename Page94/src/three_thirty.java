@@ -33,7 +33,7 @@ public class three_thirty {
 	      
 	    long results = currentHour + offset;
 	    
-	    if (results < 0) {
+/*	    if (results < 0) {
 	    	//当算出的区时为负数时，应加上24:00，日期减一天
 	    	long temp1 = results;
 	    	temp1 += 24;
@@ -72,6 +72,44 @@ public class three_thirty {
 			    System.out.println("The current time is " + (results % 12) + ":"
 					      + currentMinute + ":" + currentSecond + " PM");
 	    	}
+	    } */
+	    
+	    //所以时区的偏移量必须在合理的范围内，否则结果会不符合正常时间。
+	    //并且只是显示特定时区的时间，无法显示具体的日期
+	    if (results < 0) {
+	    	long temp1 = results;
+	    	temp1 += 24;
+	    	if ((temp1 / 12) == 0) {
+	    		System.out.println("The current time is " + (results % 12) + ":"
+					      + currentMinute + ":" + currentSecond + " AM");
+	    	}
+	    	else {
+	    		System.out.println("The current time is " + (results % 12) + ":"
+					      + currentMinute + ":" + currentSecond + " PM");
+	    	}
 	    }
+	    else if (results < 24) {
+	    	if ((results / 12) == 0) {
+	    		System.out.println("The current time is " + (results % 12) + ":"
+					      + currentMinute + ":" + currentSecond + " AM");
+	    	}
+	    	else {
+	    		System.out.println("The current time is " + (results % 12) + ":"
+					      + currentMinute + ":" + currentSecond + " PM");
+	    	}
+	    }
+	    else {
+	    	long temp2 = results;
+	    	temp2 -= 24;
+	    	if ((temp2 / 12) == 0) {
+	    		System.out.println("The current time is " + (results % 12) + ":"
+					      + currentMinute + ":" + currentSecond + " AM");
+	    	}
+	    	else {
+	    		System.out.println("The current time is " + (results % 12) + ":"
+					      + currentMinute + ":" + currentSecond + " PM");
+	    	}
+	    }
+    
 	}
 }
