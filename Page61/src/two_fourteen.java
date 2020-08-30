@@ -17,9 +17,9 @@ public class two_fourteen {
 		
 		
 		double kg = pounds * TRANS_TO_KG;
-		double M = height * TRANS_TO_M;
+		double meter = height * TRANS_TO_M;
 		
-		double results = kg / Math.pow(M, 2);
+		double results = kg / Math.pow(meter, 2);
 		
 		System.out.println("BMI is " + results);
 	}

@@ -13,9 +13,9 @@ public class two_eleven {
 		
 		Scanner input = new Scanner(System.in);
 		
-		int born = 365*24*60*60/7;
-		int death = 365*24*60*60/13;
-		int move = 365*24*60*60/45;
+		int born = 365 * 24 * 60 * 60 / 7;
+		int death = 365 * 24 * 60 * 60 / 13;
+		int move = 365 * 24 * 60 * 60 / 45;
 		
 		int total = born - death + move;
 		

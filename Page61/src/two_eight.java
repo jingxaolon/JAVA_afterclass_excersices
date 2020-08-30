@@ -31,6 +31,8 @@ public class two_eight {
 	    // Compute the current hour
 	    long currentHour = totalHours % 24;
 
+	    //只是显示特定时区的时间，无法显示具体的日期
+	    //currentHour + offset小于0的话，显示的结果不太合适。
 	    long results = currentHour + offset;
 	    
 	    // Display results
