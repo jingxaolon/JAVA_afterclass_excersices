@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Five_TwentyEight {
+public class Five_TwentyNine {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -25,12 +25,15 @@ public class Five_TwentyEight {
 		
 		String month = "";
 		int daysInAMonth = 0;
+		int daysRecord = 0;
 		int recordDayInAWeek = 0;
 		for (int i = 1;i <= 12;i++) {
 			switch (i) {
 			case 1:
 				month = "January";
+				recordDayInAWeek = day;
 				daysInAMonth += 31;
+				daysRecord = 31;
 			break;
 			
 			case 2:
@@ -54,9 +57,11 @@ public class Five_TwentyEight {
 				}
 				if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
 					daysInAMonth += 29;
+					daysRecord = 29;
 				}
 				else {
 					daysInAMonth += 28;
+					daysRecord = 28;
 				}
 			break;
 			
@@ -80,6 +85,7 @@ public class Five_TwentyEight {
 				case 7:dayInAWeek = "Sunday";break;
 				}
 				daysInAMonth += 31;
+				daysRecord = 31;
 			break;
 			
 			case 4:
@@ -102,6 +108,7 @@ public class Five_TwentyEight {
 				case 7:dayInAWeek = "Sunday";break;
 				}
 				daysInAMonth += 30;
+				daysRecord = 30;
 			break;
 			
 			case 5:
@@ -124,6 +131,7 @@ public class Five_TwentyEight {
 				case 7:dayInAWeek = "Sunday";break;
 				}
 				daysInAMonth += 31;
+				daysRecord = 31;
 			break;
 			
 			case 6:
@@ -146,6 +154,7 @@ public class Five_TwentyEight {
 				case 7:dayInAWeek = "Sunday";break;
 				}
 				daysInAMonth += 30;
+				daysRecord = 30;
 			break;
 			
 			case 7:
@@ -168,6 +177,7 @@ public class Five_TwentyEight {
 				case 7:dayInAWeek = "Sunday";break;
 				}
 				daysInAMonth += 31;
+				daysRecord = 31;
 			break;
 			
 			case 8:
@@ -190,6 +200,7 @@ public class Five_TwentyEight {
 				case 7:dayInAWeek = "Sunday";break;
 				}
 				daysInAMonth += 31;
+				daysRecord = 31;
 			break;
 			
 			case 9:
@@ -212,6 +223,7 @@ public class Five_TwentyEight {
 				case 7:dayInAWeek = "Sunday";break;
 				}
 				daysInAMonth += 30;
+				daysRecord = 30;
 			break;
 			
 			case 10:
@@ -234,6 +246,7 @@ public class Five_TwentyEight {
 				case 7:dayInAWeek = "Sunday";break;
 				}
 				daysInAMonth += 31;
+				daysRecord = 31;
 			break;
 			
 			case 11:
@@ -256,6 +269,7 @@ public class Five_TwentyEight {
 				case 7:dayInAWeek = "Sunday";break;
 				}
 				daysInAMonth += 30;
+				daysRecord = 30;
 			break;
 			
 			case 12:
@@ -277,13 +291,36 @@ public class Five_TwentyEight {
 				case 6:dayInAWeek = "Saturday";break;
 				case 7:dayInAWeek = "Sunday";break;
 				}
+				daysRecord = 31;
 			break;
 			}
 			
-			System.out.println(month + " 1, " + year + " is " + dayInAWeek);
+			//嬉咫箕遊
+			System.out.println("\t\t" + "    " + month + " " + year);
+			System.out.println("！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！");
+			System.out.println(" " + "Sun" + "\t" + "Mon" + "\t" + "Tue" + "\t" + "Wed" + "\t" + "Thu"
+					+ "\t" + "Fri" + "\t" + "Sat");
+			
+			//嬉咫晩豚
+			switch (recordDayInAWeek) {
+			case 1:System.out.print(" " + "   " + "\t");break;
+			case 2:System.out.print(" " + "   " + "\t" + "   " + "\t");break;
+			case 3:System.out.print(" " + "   " + "\t" + "   " + "\t" + "   " + "\t");break;
+			case 4:System.out.print(" " + "   " + "\t" + "   " + "\t" + "   " + "\t" + "   " + "\t");break;
+			case 5:System.out.print(" " + "   " + "\t" + "   " + "\t" + "   " + "\t" + "   " + "\t" + "   " + "\t");break;
+			case 6:System.out.print(" " + "   " + "\t" + "   " + "\t" + "   " + "\t" + "   " + "\t" + "   " + "\t" + "   " + "\t");break;
+			}
+			
+			int countPrint = daysRecord;
+			for (int k = 1;k <= countPrint;k++) {
+				System.out.print(k + "\t");
+				if ((k + recordDayInAWeek) % 7 == 0) {
+					System.out.print("\n");
+				}
+			}
+			System.out.print("\n");
+			//System.out.println(month + " 1, " + year + " is " + dayInAWeek);
 		}
-				
-		//System.out.println("January 1, " + year + " is " + dayInAWeek);
 		
 	}
 
