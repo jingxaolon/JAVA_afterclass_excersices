@@ -21,6 +21,7 @@ public class Seven_TwentyEight {
 			}
 		}
 		
+		//遗留问题：如何去重？
 	}
 
 }
