@@ -56,9 +56,27 @@ public class Seven_ThirtyOne {
 		}
 		
 		//start merge
+		int indexTemp = 0;
 		int index1 = 0, index2 = 0;
+		while (index1 < list1.length && index2 < list2.length) {
+			if (list1[index1] < list2[index2]) {
+				temp[indexTemp++] = list1[index1++];
+			}
+			else if (list1[index1] == list2[index2]) {
+				temp[indexTemp++] = list1[index1++];
+				temp[indexTemp++] = list2[index2++];
+			}
+			else {
+				temp[indexTemp++] = list2[index2++];
+			}
+		}
+		
 		while (index1 < list1.length) {
-			
+			temp[indexTemp++] = list1[index1++];
+		}
+		
+		while (index2 < list2.length) {
+			temp[indexTemp++] = list2[index2++];
 		}
 		
 		return temp;
