@@ -789,6 +789,68 @@ java TestMain "First num" alpha 53
 
 
 
+***
+
+# 第八章：多维数组
+
+## 声明二维数组变量并创建二维数组
+
+~~~shell
+#声明二维数组的语法：
+数据类型[][] 数组名；
+
+例：int[][] matrix;
+
+#创建二维数组
+matrix = new int[5][5];
+~~~
+
+## 获取二维数组的长度
+
+~~~shell
+# 二维数组实际上是一个其中每一个元素都是一个一维数组的数组。
+数组x的长度是里面元素的个数，可以用x.length来获取该值。
+元素x[0]、x[1]……x[x.length - 1]也是数组，可以使用x[0].length、x[1].length……x[x.length - 1].length来获取他们的长度。
+~~~
+
+## 不规则数组
+
+~~~shell
+# 二维数组中的每一行本身就是数组，因此，各行的长度就可以不同。这样的数组称为不规则数组。
+
+例子：
+int[][] triangleArray = {
+{1, 2, 3, 4, 5},
+{1, 2, 3, 4},
+{1, 2, 3},
+{1, 2},
+{1},
+};
+
+# 如果事先不知道不规则数组的值，但知道它的长度，可以用如下的方法创建不规则数组。
+int[][] triangleArray = new int[5][];
+triangleArray[0] = new int[5];
+triangleArray[1] = new int[4];
+triangleArray[2] = new int[3];
+triangleArray[3] = new int[2];
+triangleArray[4] = new int[1];
+~~~
+
+## 多维数组
+
+~~~shell
+# 二维数组是由一个一维数组的数组组成，而一个三维数组可以认为是由一个二维数组的数组所组成。
+
+三维数组：
+double[][][] scores = new double[6][5][2];
+~~~
+
+
+
+
+
+
+
 
 
 
@@ -815,17 +877,25 @@ java TestMain "First num" alpha 53
 
 ~~~shell
 p131 4.6
+---
 p168 5.8	5.9
 p169 5.16	解法：https://blog.csdn.net/lanxuepiaoling/article/details/44599827
+---
 p208 6.30	运行结果比较奇怪
 p209 6.31
 p210 6.32	与6.30相关
+---
 p241 7.6
 p243 7.17	已经写完，但有明显bug，待优化
 p243 7.18
 p244 7.24
 p245 7.28	已写完，但如何去重
-p245 7.32	
+p245 7.32
+p246 7.35
+p246 7.36
+p246 7.37
+---
+
 ~~~
 
 
