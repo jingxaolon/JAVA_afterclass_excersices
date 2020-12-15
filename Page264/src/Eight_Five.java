@@ -48,7 +48,6 @@ public class Eight_Five {
 		System.out.print("\t\t");
 		System.out.printf("%.1f %.1f %.1f\n", resultList[2][0], resultList[2][1], resultList[2][2]);
 	}
-
 	
 	public static double[][] addMatrix(double[][] a, double[][] b) {
 		double [][] tmpList = new double[a.length][a[0].length];
