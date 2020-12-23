@@ -17,7 +17,7 @@ public class Eight_Twenty {
         //start game
         int playerCount = 0;	//余数为0, red; 余数为1, yellow; 
         int boardIndex = -1;
-        char result = ' ';
+        char result = 'N';
         while (true) {
         	printChessBoard(board);
         	System.out.print("Drop a " + player[playerCount++ % 2] + " disk at column (0-6): ");
@@ -33,10 +33,12 @@ public class Eight_Twenty {
         			
         			result = judgeWinner(board);
         			if (result == 'R') {	//判断是否获胜
+        				printChessBoard(board);
         				System.out.println("The red player won");
         				System.exit(1);
         			}
         			else if (result == 'Y'){
+        				printChessBoard(board);
         				System.out.println("The yellow player won");
         				System.exit(1);
         			}
@@ -96,7 +98,7 @@ public class Eight_Twenty {
 		//行上是否有连续的4个棋子
 		for (i = 0;i < board.length;i++) {	//遍历每行
 			for (j = 0;j <= board[i].length - 4;j++) {
-				if ((board[i][j] == board[i][j + 1]) && (board[i][j + 1] == board[i][j + 2]) && 
+				if (board[i][j] != ' ' && (board[i][j] == board[i][j + 1]) && (board[i][j + 1] == board[i][j + 2]) && 
 						(board[i][j + 2] == board[i][j + 3])) {
 					return board[i][j];
 				}
@@ -106,7 +108,7 @@ public class Eight_Twenty {
 		//列上是否有连续的4个棋子
 		for (i = 0;i < board[0].length;i++) {	//遍历每列
 			for (j = 0;j <= board.length - 4;j++) {
-				if ((board[j][i] == board[j + 1][i]) && (board[j + 1][i] == board[j + 2][i]) && 
+				if (board[j][i] != ' ' && (board[j][i] == board[j + 1][i]) && (board[j + 1][i] == board[j + 2][i]) && 
 						(board[j + 2][i] == board[j + 3][i])) {
 					return board[j][i];
 				}
@@ -116,7 +118,7 @@ public class Eight_Twenty {
 		//正对角线上是否有连续的4个棋子
 		for (i = 0;i <= board.length - 4;i++) {
 			for (j = 0;j <= board[i].length - 4;j++) {
-				if ((board[i][j] == board[i + 1][j + 1]) && (board[i + 1][j + 1] == board[i + 2][j + 2]) && 
+				if (board[i][j] != ' ' && (board[i][j] == board[i + 1][j + 1]) && (board[i + 1][j + 1] == board[i + 2][j + 2]) && 
 						(board[i + 2][j + 2] == board[i + 3][j + 3])) {
 					return board[i][j];
 				}
@@ -126,13 +128,13 @@ public class Eight_Twenty {
 		//非正对角线上是否有连续的4个棋子
 		for (i = 0;i <= board.length - 4;i++) {
 			for (j = board[i].length - 1;j > board[i].length - 4;j--) {
-				if ((board[i][j] == board[i + 1][j - 1]) && (board[i + 1][j - 1] == board[i + 2][j - 2]) && 
+				if (board[i][j] != ' ' && (board[i][j] == board[i + 1][j - 1]) && (board[i + 1][j - 1] == board[i + 2][j - 2]) && 
 						(board[i + 2][j - 2] == board[i + 3][j - 3])) {
 					return board[i][j];
 				}
 			}
 		}
 		
-		return ' ';
+		return 'N';
 	}
 }
