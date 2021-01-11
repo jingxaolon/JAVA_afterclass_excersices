@@ -847,7 +847,342 @@ double[][][] scores = new double[6][5][2];
 
 
 
+****
 
+# 第九章：对象和类
+
+## 为对象定义类
+
+~~~shell
+# 面向对象程序设计使用对象进行程序设计。
+# 对象代表现实世界中可以明确标识的一个实体，如一个学生，一张桌子等。
+
+- 一个对象的状态
+	由数据域及其当前值来表示
+	
+- 一个对象的行为
+	由方法定义。调用对象的一个方法就是要求对象完成一个动作
+	
+~~~
+
+~~~shell
+# 使用一个通用类来定义同一类型的对象。
+- 类是一个模板、蓝本
+- 对象是类的实例
+- 一个类可以有多个实例，创建实例的过程称为实例化
+~~~
+
+## 定义类和创建对象
+
+~~~shell
+# 定义类的例子
+public class TestCircle {
+  /** Main method */
+  public static void main(String[] args) {
+    // Create a circle with radius 1
+    Circle circle1 = new Circle();
+    System.out.println("The area of the circle of radius "
+      + circle1.radius + " is " + circle1.getArea());
+
+    // Create a circle with radius 25
+    Circle circle2 = new Circle(25);
+    System.out.println("The area of the circle of radius "
+      + circle2.radius + " is " + circle2.getArea());
+
+    // Create a circle with radius 125
+    Circle circle3 = new Circle(125);
+    System.out.println("The area of the circle of radius "
+      + circle3.radius + " is " + circle3.getArea());
+
+    // Modify circle radius
+    circle2.radius = 100; // or circle2.setRadius(100)
+    System.out.println("The area of the circle of radius "
+      + circle2.radius + " is " + circle2.getArea());
+  }
+}
+
+class Circle {
+  double radius;												# 数据域
+
+  /** Construct a circle with radius 1 */
+  Circle() {													# 构造方法
+    radius = 1;
+  }
+
+  /** Construct a circle with a specified radius */
+  Circle(double newRadius) {									# 构造方法
+    radius = newRadius;
+  }
+																# 方法
+  /** Return the area of this circle */
+  double getArea() {
+    return radius * radius * Math.PI;
+  }
+
+  /** Return the perimeter of this circle */
+  double getPerimeter() {
+    return 2 * radius * Math.PI;
+  }
+
+  /** Set a new radius for this circle */
+  void setRadius(double newRadius) {
+    radius = newRadius;
+  }
+}
+~~~
+
+注：
+
+1、包含main方法的称为主类
+
+2、一个文件中只能有一个公共（public）类，公共类必须与文件同名。
+
+3、上述代码编译后，会生成两个.class文件（TestCircle.class、Circle.class）
+
+
+
+> 方法2：
+>
+> # 可以将两个类组合成一个
+
+~~~shell
+public class AlternativeCircle {
+  /** Main method */
+  public static void main(String[] args) {
+    // Create a circle with radius 1
+    AlternativeCircle circle1 = new AlternativeCircle();
+    System.out.println("The area of the circle of radius "
+      + circle1.radius + " is " + circle1.getArea());
+  
+    // Create a circle with radius 25
+    AlternativeCircle circle2 = new AlternativeCircle(25);
+    System.out.println("The area of the circle of radius "
+      + circle2.radius + " is " + circle2.getArea());
+  
+    // Create a circle with radius 125
+    AlternativeCircle circle3 = new AlternativeCircle(125);
+    System.out.println("The area of the circle of radius "
+      + circle3.radius + " is " + circle3.getArea());
+  
+    // Modify circle radius
+    circle2.radius = 100;
+    System.out.println("The area of the circle of radius "
+      + circle2.radius + " is " + circle2.getArea());
+  }
+  
+  double radius; 
+ 
+  /** Construct a circle with radius 1 */
+  AlternativeCircle() {
+    radius = 1;
+  }
+  
+  /** Construct a circle with a specified radius */
+  AlternativeCircle(double newRadius) {
+    radius = newRadius;
+  }
+  
+  /** Return the area of this circle */
+  double getArea() {
+    return radius * radius * Math.PI;
+  }
+  
+  /** Return the perimeter of this circle */
+  double getPerimeter() {
+    return 2 * radius * Math.PI;
+  }
+  
+  /** Set a new radius for this circle */
+  void setRadius(double newRadius) {
+    radius = newRadius;
+  }
+}
+~~~
+
+## 使用构造方法构造对象
+
+~~~shell
+# 构造方法有以下三个特殊之处：
+- 构造方法必须和所在类名字相同
+- 构造方法没有返回值类型，甚至连void也没有
+- 构造方法是在创建一个对象时由new操作符调用的。构造方法的作用是初始化对象。
+
+# 构造方法也可以重载
+
+通常会提供一个没有参数的构造方法。这样的构造方法称为无参构造方法。
+
+在一个类中，如果用户没有定义构造方法，类会隐式定义一个方法体为空的无参构造方法。
+~~~
+
+## 通过引用变量访问对象
+
+~~~shell
+# 新创建的对象在内存中被分配空间，它们可以通过引用变量来访问。
+# 对象的数据和方法可以运用点操作符（.）通过对象的引用变量进行访问。
+~~~
+
+### 引用变量和引用类型
+
+~~~shell
+# 声明引用变量：
+Classname objectRefer;
+如Circle myCircle;
+
+# 创建对象
+myCircle = new Circle();
+
+# 变量myCircle中存放的是对Circle对象的引用。
+~~~
+
+### 访问对象的数据和方法
+
+~~~shell
+# 在创建一个对象后，它的数据访问和方法调用可以使用点操作符（.）来进行，该操作符也称为对象成员访问操作符
+
+# 对象的数据域称为实例变量，因为它依赖于某个具体的实例。
+# 对象的方法称为实例方法，因为只能在具体的实例上调用方法。
+# 实例方法被调用的对象称为实例对象。
+
+# 有时候，对象在创建后并不需要引用，在这种情况下，可以创建一个对象，而不将它明确地赋值给一个变量，如下所示：
+new Circle();
+或者
+System.out.println("Area is " + new Circle(5).getArea());
+这种方式创建的对象称为匿名对象。
+~~~
+
+### 引用数据域和null值
+
+~~~shell
+# 数据域也可能是引用型的，如下
+class Student {
+	String name;
+}
+如果一个引用类型的数据域没有引用任何对象，那么这个数据域就有一个特殊的Java值null。
+null是引用类型字面值。
+
+char类型数据域的默认值是'\u000'
+
+Java没有给方法中的局部变量赋默认值
+
+警告：
+调用值为null的引用变量上的方法会报错误：NullPointerException
+~~~
+
+### 基本类型变量和引用类型变量的区别
+
+~~~shell
+# 基本类型变量存储的是基本类型值
+
+# 引用类型变量存储的是对象的存储地址
+如果你不再需要某个对象，可以显示地给该对象的引用变量赋null值。
+~~~
+
+## 使用Java库中的类
+
+~~~shell
+# Java包含了丰富的类的集合
+Data类
+p288
+
+Random类
+p289
+
+Point2D类
+p290
+~~~
+
+## 静态变量、常量和方法
+
+~~~shell
+# 实例变量是属于类的某个特定实例的，不能被同一个类的不同对象所共享。
+如果想让一个类的所有实例共享数据，就要使用静态变量，也称为类变量。
+
+静态变量将变量值存储在一个公共的内存地址，任何一个对象修改了静态变量的值，那么同一个类的所有对象都会受到影响。
+
+无需创建类的实例就可以调用静态方法。
+
+# 要声明一个静态变量或定义一个静态方法，就要在这个变量和方法的声明中加上修饰符static。
+类中的常量是被该类的所有对象所共享的，因此，常量应该声明为final static。
+
+# main方法也是静态方法。
+
+# 静态变量和静态方法可以通过引用变量或者它们的类名来调用。
+
+# 静态方法不能调用实例方法或者访问实例数据域，因为静态方法和静态数据域不属于某个特定的对象。
+~~~
+
+## 可见性修饰符
+
+~~~shell
+# 在类、方法、数据域前面使用public可见性修饰符，表示他们可以被任何其他的类访问，如果没有使用可见性修饰符，那么默认类、方法和数据域是可以被同一个包中的任何一个类访问。
+如果定义类时没有声明包，就表示把它放在默认包中。
+
+# private修饰符限定方法和数据域只能在它自己的类中被访问。
+~~~
+
+## 数据域封装
+
+~~~shell
+# 为了避免对数据域的直接修改，应该使用private修饰符将数据域声明为私有的，这称为数据域封装。
+为了访问私有数据域，可以提供一个获取方法返回数据域的值，获取方法也称为访问器。
+为了更新私有数据域，可以提供一个设置方法给数据域设置新值，设置方法也称为修改器。
+
+注：除非特别的原因而另外指定，否则所有的数据域都应该被声明为私有的，并且所有的构造方法和方法应该被声明为公共的。
+~~~
+
+## 向方法传递对象参数
+
+~~~shell
+# 给方法传递一个对象，是将对象的引用传递给方法。
+~~~
+
+## 对象数组
+
+~~~shell
+# 数组既可以存储基本类型值，也可以存储对象。
+Circle circleArray = new Circle[10];
+
+# 当使用new操作符创建对象数组后，这个数组中的每个元素都是默认值为null的引用变量。
+~~~
+
+## 不可变对象和类
+
+~~~shell
+# 创建一个对象后，它的内容是之后允许改变的。
+有时候也需要创建一个一旦创建其内容就不能再改变的对象。称这种对象为不可变对象，而它的类就成为不可变类。
+
+# 比如把Circle类的设置方法删掉，该类就变成不可变类，因为半径是私有的，所以如果没有设置方法，它的值就不能再改变。
+
+# 如果一个类是不可变的，那么它的所有数据域必须都是私有的，而且没有对任何一个数据域提供公共的设置方法。
+
+# 要使一个类成为不可变的，必须满足下面的要求：
+- 所有数据域是私有的
+- 没有修改器方法
+- 没有返回一个指向可变数据域的引用的访问器方法
+~~~
+
+## 变量的作用域
+
+~~~shell
+# 局部变量的声明和使用都在一个方法的内部。
+
+# 类的变量和方法可以在类中以任意顺序出现。除非例外情况（一个数据域是基于对另一个数据域的引用）
+类变量只能声明一次！
+
+# 如果一个局部变量和一个类变量具有相同的名字，那么局部变量优先，而同名的类变量将被隐藏。
+因此，除了方法中的参数，不要将实例变量或静态变量的名字作为局部变量名。
+~~~
+
+## this引用
+
+~~~shell
+# 关键字this是一个对象可以用来引用自身的引用名。
+可以用this关键字引用对象的实例成员。
+
+然而在引用被方法或构造方法的参数所隐藏的数据域以及调用一个重载的构造方法时，this引用是必需的。
+
+# Java要求，在构造方法中语句this(arg-list)应在任何其他可执行语句之前出现。
+~~~
 
 
 
@@ -899,6 +1234,8 @@ p267 8.12	待完善
 p271 8.24
 p274 8.35
 p274 8.37	与美国州有关，不是美国人，不做
+---
+
 ~~~
 
 
