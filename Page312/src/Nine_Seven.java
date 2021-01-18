@@ -5,7 +5,14 @@ public class Nine_Seven {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Account newAccount1 = new Account();
+		Account newAccount1 = new Account(1122, 20000);
+		newAccount1.setAnnualInterestRate(4.5);
+		newAccount1.withDraw(2500);
+		newAccount1.deposit(3000);
+		
+		System.out.println("The balance is: " + newAccount1.getBalance());
+		System.out.println("The monthly interest rate is: " + newAccount1.getMonthlyInterestRate() + "%");
+		System.out.println("The date created is: " + newAccount1.getDateFun());
 	}
 
 }
@@ -17,6 +24,7 @@ class Account {
 	private Date dateCreated;
 	
 	public Account() {
+		id++;
 		dateCreated = new Date();
 	}
 	
