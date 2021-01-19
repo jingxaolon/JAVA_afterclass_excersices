@@ -21,7 +21,7 @@ public class three_one {
 			result2 = (-b - Math.pow(calculate, 0.5)) / (2 * a);
 			System.out.println("The equation has two roots " + result1 + " and " + result2);
 		}
-		else if (calculate == 0) {
+		else if (Math.abs(calculate - 0.0) < 10E-14) {
 			result1 = (-b) / 2 * a;
 			System.out.println("The equation has one roots " + result1);
 		}

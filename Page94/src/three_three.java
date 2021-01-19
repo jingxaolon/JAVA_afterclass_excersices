@@ -20,7 +20,7 @@ public class three_three {
 		double fenzi1 = e * d - b * f;
 		double fenzi2 = a * f - e * c;
 		
-		if (fenmu == 0) {
+		if (Math.abs(fenmu - 0.0) < 10E-14) {
 			System.out.println("The equation has no solution");
 			System.exit(1);
 		}
